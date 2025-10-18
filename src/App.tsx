@@ -1,4 +1,6 @@
-import { useCurrentAccount, useDisconnectWallet, ConnectButton } from '@mysten/dapp-kit';
+import { useCurrentAccount, useDisconnectWallet } from '@mysten/dapp-kit';
+import '@mysten/dapp-kit/dist/index.css';
+import WalletConnect from './component/walletConnect';
 
 function App() {
   const currentAccount = useCurrentAccount();
@@ -9,12 +11,8 @@ function App() {
       <div className="w-full max-w-md p-8 space-y-6 bg-white rounded-lg shadow-md">
         <h2 className="text-2xl font-bold text-center text-gray-800">Login</h2>
 
-        {/* ✅ ConnectButton handles dialog internally */}
         <div className="space-y-3">
-          <ConnectButton
-            connectText="Connect Wallet"
-            className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
-          />
+          <WalletConnect />
 
           {currentAccount && (
             <button
@@ -25,8 +23,6 @@ function App() {
             </button>
           )}
         </div>
-
-        {/* ✅ Always render ConnectButton (no conditional toggling) */}
         {currentAccount && (
           <div className="p-3 bg-green-50 border border-green-200 rounded-md">
             <p className="text-sm text-green-800">
